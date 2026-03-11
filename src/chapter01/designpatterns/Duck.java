@@ -1,16 +1,27 @@
 package chapter01.designpatterns;
 
-public class Duck {
+public abstract class Duck {
 
-	public void quack() {
-		System.out.print("quack, ");
+	FlyBehavior flyBehavior;
+	QuackBehavior quackBehavior;
+
+	public Duck() {
+		flyBehavior = new FlyWithWings();
+		quackBehavior = new Quack();
+	}
+
+	public abstract void display();
+
+	public void performQuack() {
+		quackBehavior.quack();
+	}
+
+	public void performFly() {
+		flyBehavior.fly();
 	}
 
 	public void swim() {
-		System.out.print("swim, ");
+		System.out.print("All ducks float, even decouys!");
 	}
 
-	public void display() {
-		System.out.println("I'm a duck and I can ");
-	}
 }
